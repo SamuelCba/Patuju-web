@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U.E PATUJU</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Oxygen:wght@300;400;700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    </head>  
+</head>
+<body>
+
+  <header>
+    <div>
+      <a href="index.html"><img src="imagenes/logo.png" alt="" class="escudo"></a>
+    </div>
+    <div class="logo">
+      <span>UE</span> <span>PATUJÚ</span>
+    </div>
+
+    <div class="bars">
+      <img src="imagenes/menu.png" alt="menu" id="linea">
+    </div>
+    <div class="nav">
+    <nav class="nav-bar">
+      <ul>
+        <li>
+          <a href="index.html">Inicio</a>
+        </li>
+        <li>
+          <a href="historia.html">Historia</a>
+        </li>
+        <li>
+          <a href="Logros.html">Logros</a>
+        </li>
+        <li>
+          <a href="teachers.html">Docentes</a>
+        </li>
+        <li>
+          <a href="himno.html" class="active">Himno</a>
+        </li>
+        <li>
+          <a href="otros.html">Otros</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  </header> 
+  <script src="script.js"></script>
+  <div class="hymn-container">
+    <div class="hymn-title">Himno al colegio Patujú</div>
+    <div class="hymn-author">Letra: Elbio Yanaje Telao  | Música: Angel José Rebozo Zanga</div>
+
+    <div class="hymn-text">
+      ¡Oh supremo Patujú!
+      Entonemos con fe, a viva voz 
+      Prometiendo estudio en el porvenir 
+      En concordia y grandeza.
+      
+      Coro
+Proclamad a los fundadores 
+Por su bondad y su lealtad con Patujú.
+
+¡Surgió, entre palmeras!
+La flor de Patujú 
+Como rayos y centellas 
+Dignos para nuestro  Dios 
+
+Pregonando grandioso porvenir
+Pioneros de la educación
+Trabajad sin cesar
+Con firmeza temple lenidad
+
+    </div>
+</div>  
+<div>
+<div class="music-player">
+  <p>ESCUCHAR EL HIMNO</p>
+    <audio id="audio" src="audio/HIMNO%20AL%20COLEGIO%20PATUJU.mp3"></audio>
+
+    <!-- Controles de reproducción -->
+    <div class="controls">
+        <img id="restart" src="https://res.cloudinary.com/dsi6qmhcg/image/upload/v1730690586/reset-btn_oufdvb.png" alt="Reiniciar">
+        <img id="playPause" src="https://res.cloudinary.com/dsi6qmhcg/image/upload/v1730564508/krglrizva6ujg61c82kk.png " alt="Play">
+    </div>
+
+    <!-- Barra de progreso -->
+    <div class="progress-container" id="progress-container">
+        <div class="progress" id="progress"></div>
+    </div>
+
+    <!-- Botón de descarga -->
+    <button class="download-btn" id="download">Descargar</button>
+</div>
+
+<script>
+    const audio = document.getElementById("audio");
+    const playPauseBtn = document.getElementById("playPause");
+    const restartBtn = document.getElementById("restart");
+    const progress = document.getElementById("progress");
+    const progressContainer = document.getElementById("progress-container");
+    const downloadBtn = document.getElementById("download");
+
+    function togglePlayPause() {
+        if (audio.paused) {
+            audio.play();
+            playPauseBtn.src = "https://res.cloudinary.com/dsi6qmhcg/image/upload/v1730699005/pause_ct01va.png"; // Cambiar al ícono de pausa
+        } else {
+            audio.pause();
+            playPauseBtn.src = "https://res.cloudinary.com/dsi6qmhcg/image/upload/v1730564508/krglrizva6ujg61c82kk.png"; // Cambiar al ícono de play
+        }
+    }
+
+    function restartSong() {
+        audio.currentTime = 0;
+        audio.play();
+        playPauseBtn.src = "/imagenes/play.png";
+    }
+
+
+    audio.addEventListener("timeupdate", () => {
+        const progressPercent = (audio.currentTime / audio.duration) * 100;
+        progress.style.width = progressPercent + "%";
+
+
+        if (progressPercent < 50) {
+            progress.style.background = "linear-gradient(90deg,  #fcff42, #1eff0a)";
+        } else {
+            progress.style.background = "linear-gradient(90deg, #fcff42, #1eff0a)";
+        }
+    });
+
+
+    function setProgress(event) {
+        const width = progressContainer.clientWidth;
+        const clickX = event.offsetX;
+        const duration = audio.duration;
+
+        audio.currentTime = (clickX / width) * duration;
+    }
+
+
+    playPauseBtn.addEventListener("click", togglePlayPause);
+    restartBtn.addEventListener("click", restartSong);
+
+
+    progressContainer.addEventListener("click", setProgress);
+
+
+    downloadBtn.addEventListener("click", () => {
+        const link = document.createElement("a");
+        link.href = audio.src;
+        link.download = "tu-cancion.mp3";
+        link.click();
+    });
+</script>
+</div>
+</body>
+</html>

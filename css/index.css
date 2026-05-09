@@ -1,0 +1,351 @@
+.welcome {
+
+    /*box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);*/
+    width: 80vw;
+    height: auto;
+    text-align: left;
+    font-weight: 600;
+    padding: 20px;
+    font-size: 40px;
+    border-radius: 20px;
+    font-family: 'saira', sans-serif;
+    margin-top: 20px;
+    margin-left: 10%;
+    display: block;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(to right, rgb(229, 255, 0), rgb(21, 255, 0));
+    color: transparent;
+    background-clip: text;
+    animation: textoanimado 3s infinite ease-in-out;
+    animation: escribir 4s steps(30) 1s, parpadeo 0.5s step-end infinite alternate;
+}
+
+
+
+
+    /* Animación de escritura */
+    @keyframes escribir {
+        from {
+            width: 0;
+        }
+
+        to {
+            width: 100%;
+        }
+    }
+
+    /* Animación del cursor */
+    @keyframes parpadeo {
+        from {
+            border-color: transparent;
+        }
+
+        to {
+            border-color: #333;
+        }
+    }
+
+    @keyframes textoanimado {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0 50%;
+        }
+    }
+
+
+    .welcome p {
+        font-size: 90px;
+        margin-top: 90px;
+        font-weight: bold;
+
+    }
+
+    .es-pa img {
+        display: block;
+        width: 300px;
+        height: auto;
+        margin: auto;
+        margin-top: calc(90vh / 4);
+
+    }
+
+    .primera-hoja {
+        display: flex;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-color: #00000000;
+        background-image: url(https://unidadeducativapatuju.vercel.app/imagenes/UE\ patuju3.jpeg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        width: 100%;
+      
+      }
+      .segunda-hoja {
+        display: flex;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-color: #00000000;
+        background-image: url(https://unidadeducativapatuju.vercel.app/imagenes/UE\ patuju5.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+      }
+ /*inicio*/
+.slider-frame{
+    width: 99vw;
+    height: 90vh;
+    margin: auto;
+    overflow: hidden;
+  margin-top: -13px;
+  
+  }
+  
+  .slider-frame ul {
+    display: flex;
+    padding: 0;
+    width: 200%;
+    animation: slide 15s infinite alternate ease-in;
+  }
+  .slider-frame li {
+    list-style: none;
+    width: 100%;
+  }
+  
+  .slider-frame ul li div {
+    width: 100vw;
+    height: 90vh;
+  }
+  
+  
+  @keyframes slide {
+    0% {margin-left: 0%;}
+    70% {margin-left: 0%;}
+  
+    80% {margin-left: -100%;}
+    100% {margin-left: -100%;}
+   
+  }
+  
+  
+
+      @media (max-width: 900px) {
+        .primera-hoja {
+            background-image: url(https://unidadeducativapatuju.vercel.app/imagenes/UE\ patuju4-1.jpeg);
+            flex-direction: column;
+    
+        }
+        .segunda-hoja {
+            background-image: url(https://res.cloudinary.com/dsi6qmhcg/image/upload/v1730777091/UE_patuju5.1_vfl3am.jpg);
+            flex-direction: column;
+    
+        }
+        .slider-frame{
+            width: 96.4vw;
+            height: 90vh;
+            overflow: hidden;
+          margin-top: -13px;
+          
+          }
+          @keyframes slide {
+            0% {margin-left: 0%;}
+            70% {margin-left: 0%;}
+          
+            80% {margin-left: -105%;}
+            100% {margin-left: -105%;}
+           
+          }
+        .welcome p {
+            font-size: 50px;
+        }
+        .welcome {
+            width: 90vw;
+            background-clip: text;
+            background: #000000;
+            background-color: white;
+        display: flex;
+                font-size: 35px;
+                padding: 10px;
+                margin: auto;
+                margin-top: 0;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-items: center;
+                margin-left: 10;
+                box-shadow: 0px 0px 8px rgba(rgb(0, 0, 0), 0, 0, 0.5);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                color: transparent;
+                background-clip: text;
+            }
+    
+    
+            .es-pa img {
+                width: 150px;
+                display: flex;
+                margin: 0;
+                margin: auto;
+    
+            }
+    
+        }
+
+    .UN {
+        color: #000000;
+        font-weight: 400;
+        padding: 10px;
+
+    }
+        /* Contenedor de la noticia */
+        .news-section {
+            display: flex;
+            justify-content: space-between;
+            max-width: 100vw;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+        }
+
+        .news-section img {
+            width: 300px;
+            max-width: 10%;
+            border-radius: 8px;
+            margin-right: 10%;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .news-section img:hover {
+            transform: scale(1.02);
+        }
+
+        .news-section h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin: 15px 0 10px;
+        }
+
+        .news-section p {
+            width: 499px;
+            font-size: 1em;
+            color: #555;
+        }
+
+        /* Estilos para la vista ampliada de la imagen */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 100%;
+            max-height: auto;
+            overflow: hidden;
+        }
+
+        /* Imagen en el modal */
+        .modal-content img {
+            width: 80%;
+            max-width:550px; /* Tamaño máximo */
+            height: auto;
+            border-radius: 8px;
+            cursor: grab;
+            transition: transform 0.3s ease;
+        }
+
+        /* Zoom en la imagen */
+        .zoomed {
+            cursor: grabbing;
+            transform: scale(3); /* Aumenta el tamaño de la imagen */
+        }
+
+        /* Botón de cierre */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #fff;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 35px;
+            transition: background-color 0.3s;
+        }
+
+        .close-button:hover {
+            background-color: #ddd;
+        }
+
+        .news-section a {
+            color: blue;
+        }
+        @media (max-width: 900px) {
+            .news-section {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+
+            }
+            .news-section a {
+                margin: auto;
+                color: blue;
+                display: flex;
+                float: right;
+            }
+
+            .news-section p {
+                width: 100%;
+                padding: 20px;
+                font-size: 1em;
+                color: #555;
+            }
+            .news-section h2 {
+                font-size: 1.8em;
+                color: #333;
+                
+            }
+            .news-section img {
+                margin: auto;
+                width: 300px;
+                max-width: 40%;
+            }
+            .modal-content img {
+                margin-left: 15%;
+                max-width: 70%;
+                min-width: 70%;
+                height: auto;
+                border-radius: 8px;
+                cursor: grab;
+                transition: transform 0.3s ease;
+            }
+        }
