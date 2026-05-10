@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import Image from 'next/image'
 
 const navItems = [
   { label: 'Inicio', href: '/' },
@@ -27,11 +28,16 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 font-semibold text-lg">
-            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-white text-sm font-bold">
-              P
-            </div>
-            <span className="hidden sm:inline">Patujú</span>
+          <Link href="/" className="flex items-center gap-3 font-semibold text-lg hover:opacity-80 transition-opacity">
+            <Image
+              src="/logo.png"
+              alt="Patujú Logo"
+              width={40}
+              height={40}
+              className="w-10 h-10 object-contain"
+              priority
+            />
+            <span className="hidden sm:inline text-foreground">Patujú</span>
           </Link>
 
           {/* Desktop Menu */}
