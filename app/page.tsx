@@ -1,8 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import Navigation from '@/components/Navigation'
 import Hero from '@/components/Hero'
 import Footer from '@/components/Footer'
+import NewsModal from '@/components/NewsModal'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { BookOpen, Users, Sparkles, ArrowRight, Award, Globe } from 'lucide-react'
@@ -47,6 +49,8 @@ const news = [
 ]
 
 export default function Home() {
+  const [isNewsModalOpen, setIsNewsModalOpen] = useState(false)
+
   return (
     <main className="min-h-screen">
       <Navigation />
@@ -118,12 +122,12 @@ export default function Home() {
               </h2>
               <p className="text-secondary">Mantente informado sobre eventos y logros de nuestra comunidad</p>
             </div>
-            <Link
-              href="/otros"
+            <button
+              onClick={() => setIsNewsModalOpen(true)}
               className="hidden sm:flex items-center gap-2 px-6 py-3 rounded-lg bg-accent/10 border border-accent/20 text-accent hover:border-accent/50 hover:bg-accent/20 transition-all font-semibold"
             >
               Ver más <ArrowRight size={18} />
-            </Link>
+            </button>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -160,12 +164,12 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-8 text-center sm:hidden"
           >
-            <Link
-              href="/otros"
+            <button
+              onClick={() => setIsNewsModalOpen(true)}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent text-white hover:bg-accent-light transition-colors font-semibold"
             >
               Ver todas las noticias <ArrowRight size={18} />
-            </Link>
+            </button>
           </motion.div>
         </div>
       </section>
@@ -214,6 +218,13 @@ export default function Home() {
       </section>
 
       <Footer />
+
+      {/* News Modal */}
+      <NewsModal
+        isOpen={isNewsModalOpen}
+        onClose={() => setIsNewsModalOpen(false)}
+        news={news}
+      />
     </main>
   )
 }

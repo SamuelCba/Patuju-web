@@ -7,48 +7,37 @@ import { motion } from 'framer-motion'
 
 const verses = [
   {
+    verse: 'Introducción',
+    lyrics: [
+      '¡Oh supremo Patujú!',
+      'Entonemos con fe, a viva voz',
+      'Prometiendo estudio en el porvenir',
+      'En concordia y grandeza.',
+    ],
+  },
+  {
+    verse: 'Coro',
+    lyrics: [
+      'Proclamad a los fundadores',
+      'Por su bondad y su lealtad con Patujú.',
+    ],
+  },
+  {
     verse: 'Verso 1',
     lyrics: [
-      'Patujú, luz de esperanza',
-      'Que brillas en el horizonte',
-      'Con tu nombre en cada corazón',
-      'Nos guías hacia adelante',
-      '',
-      'Coro:',
-      'Oh, Patujú, Patujú',
-      'Tierra de sabiduría',
-      'En tus aulas florecer',
-      'Es nuestro destino feliz',
+      '¡Surgió, entre palmeras!',
+      'La flor de Patujú',
+      'Como rayos y centellas',
+      'Dignos para nuestro Dios',
     ],
   },
   {
     verse: 'Verso 2',
     lyrics: [
-      'En tus muros se forjan sueños',
-      'De estudiantes valientes y dignos',
-      'Con la fuerza de nuestros maestros',
-      'Alcanzamos la cumbre del éxito',
-      '',
-      'Coro:',
-      'Oh, Patujú, Patujú',
-      'Tierra de sabiduría',
-      'En tus aulas florecer',
-      'Es nuestro destino feliz',
-    ],
-  },
-  {
-    verse: 'Verso 3',
-    lyrics: [
-      'Seguiremos tu noble camino',
-      'De verdad, de amor y de paz',
-      'Patujú, orgullo de todos',
-      'Nos vemos en un futuro mejor',
-      '',
-      'Coro:',
-      'Oh, Patujú, Patujú',
-      'Tierra de sabiduría',
-      'En tus aulas florecer',
-      'Es nuestro destino feliz',
+      'Pregonando grandioso porvenir',
+      'Pioneros de la educación',
+      'Trabajad sin cesar',
+      'Con firmeza temple lenidad',
     ],
   },
 ]
