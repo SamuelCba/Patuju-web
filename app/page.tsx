@@ -32,19 +32,24 @@ const highlights = [
 
 const news = [
   {
-    title: 'Inauguración del Nuevo Pabellón',
-    date: '15 de mayo de 2024',
-    description: 'Se inaugura exitosamente el nuevo pabellón educativo con espacios modernos.',
+    title: 'Concurso de Danzas para Mantener Viva la Cultura',
+    date: '2024',
+    description: 'La Unidad Educativa Patujú ha lanzado una convocatoria para un concurso de danzas, con premios para los cuatro primeros lugares. Los ensayos oficiales y las inscripciones ya están en marcha, invitando a todos los estudiantes a participar y celebrar sus raíces culturales.',
   },
   {
-    title: 'Campeonato Interescolar 2024',
-    date: '10 de mayo de 2024',
-    description: 'Nuestros estudiantes obtienen destacadas posiciones en competencias deportivas.',
+    title: 'Segundo lugar en Futbol de Salón',
+    date: '2024',
+    description: 'En los III Juegos Deportivos Estudiantiles Intercolegiales, nuestro equipo de futbol de salón categoría varones obtuvo el segundo lugar bajo la dirección técnica del Lic. Cristian Cerezo Lara, demostrando el talento deportivo de nuestros estudiantes.',
   },
   {
-    title: 'Programa de Becas',
-    date: '1 de mayo de 2024',
-    description: 'Se abre la convocatoria para becas académicas 2024-2025.',
+    title: 'Primer lugar en Olimpiada de Ajedrez',
+    date: '2024',
+    description: 'El estudiante Franz Elvin Carlo Vega ocupó primer lugar en la categoría de 1º a 3º año de escolaridad en la etapa distrital, clasificando para representar al Distrito de San Julián en la etapa departamental.',
+  },
+  {
+    title: 'Primer lugar en Concurso de Banda Estudiantil',
+    date: '2024',
+    description: 'Nuestros estudiantes conquistaron el primer lugar en la categoría B del concurso de Banda Estudiantil, recibiendo 2000 Bs. como premio y reconocimiento a su dedicación y preparación.',
   },
 ]
 

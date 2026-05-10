@@ -75,17 +75,18 @@ export default function MusicPlayer({ title, artist, duration = 300, accentColor
     <div className="w-full">
       <audio ref={audioRef} src="/hymn.mp3" />
       
-      {/* Player Container */}
+      {/* Player Container with iOS 18 VisionOS Aesthetic */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="relative rounded-3xl overflow-hidden"
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="relative rounded-[40px] overflow-hidden shadow-2xl"
         style={{
-          background: `linear-gradient(135deg, ${accentColor}15 0%, ${accentColor}08 100%)`,
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
+          background: `linear-gradient(135deg, ${accentColor}20 0%, ${accentColor}10 50%, ${accentColor}05 100%)`,
+          backdropFilter: 'blur(40px)',
+          WebkitBackdropFilter: 'blur(40px)',
+          border: '1px solid rgba(255, 255, 255, 0.25)',
+          boxShadow: `0 25px 50px -12px rgba(15, 125, 63, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)`,
         }}
       >
         {/* Background Gradient Blur */}
@@ -97,24 +98,40 @@ export default function MusicPlayer({ title, artist, duration = 300, accentColor
         />
 
         <div className="p-8 sm:p-10">
-          {/* Album Art Placeholder */}
+          {/* Album Art Placeholder - iOS 18 Style */}
           <motion.div
-            animate={{ scale: isPlaying ? 1.02 : 1 }}
-            transition={{ duration: 0.5, repeat: isPlaying ? Infinity : 0, repeatType: 'reverse' }}
-            className="relative mx-auto mb-8 w-40 h-40 sm:w-56 sm:h-56 rounded-2xl overflow-hidden shadow-2xl"
+            animate={{ 
+              scale: isPlaying ? [1, 1.03, 1] : 1,
+              rotateZ: isPlaying ? 360 : 0,
+            }}
+            transition={{ 
+              scale: { duration: 2, repeat: isPlaying ? Infinity : 0, ease: 'easeInOut' },
+              rotateZ: { duration: 20, repeat: isPlaying ? Infinity : 0, ease: 'linear' },
+            }}
+            className="relative mx-auto mb-8 w-40 h-40 sm:w-56 sm:h-56 rounded-[32px] overflow-hidden shadow-2xl"
             style={{
-              background: `linear-gradient(135deg, ${accentColor} 0%, ${accentColor}cc 100%)`,
+              background: `linear-gradient(135deg, ${accentColor} 0%, ${accentColor}aa 100%)`,
+              boxShadow: isPlaying ? `0 20px 60px -10px ${accentColor}50, inset 0 1px 0 rgba(255, 255, 255, 0.2)` : `0 10px 40px -5px ${accentColor}30`,
             }}
           >
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/30" />
+            {/* Gradient Overlay with Light Effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-black/40" />
+            
+            {/* Animated Background Glow */}
+            {isPlaying && (
+              <motion.div
+                className="absolute inset-0 rounded-[32px]"
+                animate={{ boxShadow: ['inset 0 0 30px rgba(255, 255, 255, 0.1)', 'inset 0 0 60px rgba(255, 255, 255, 0.2)'] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            )}
             
             {/* Music Note Icon */}
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div
-                animate={{ rotate: isPlaying ? 360 : 0 }}
-                transition={{ duration: 3, repeat: isPlaying ? Infinity : 0, ease: 'linear' }}
-                className="text-white/80"
+                animate={{ scale: isPlaying ? [1, 1.1, 1] : 1 }}
+                transition={{ duration: 0.8, repeat: isPlaying ? Infinity : 0 }}
+                className="text-white/90"
               >
                 <svg className="w-20 h-20 sm:w-28 sm:h-28" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 3v9.28c-0.47-0.98-1.45-1.66-2.59-1.66-1.61 0-2.92 1.31-2.92 2.92s1.31 2.92 2.92 2.92c1.14 0 2.12-0.68 2.59-1.66V21h5V3h-4z" />
@@ -122,13 +139,20 @@ export default function MusicPlayer({ title, artist, duration = 300, accentColor
               </motion.div>
             </div>
 
-            {/* Playing Indicator */}
+            {/* Playing Pulse Animation */}
             {isPlaying && (
-              <motion.div
-                className="absolute inset-0 rounded-2xl border-2 border-white/40"
-                animate={{ boxShadow: '0 0 30px rgba(255, 255, 255, 0.2)' }}
-                transition={{ duration: 0.8, repeat: Infinity }}
-              />
+              <>
+                <motion.div
+                  className="absolute inset-0 rounded-[32px] border-2 border-white/50"
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <motion.div
+                  className="absolute -inset-4 rounded-[40px] border border-white/20"
+                  animate={{ scale: [1, 1.15, 1], opacity: [1, 0, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </>
             )}
           </motion.div>
 

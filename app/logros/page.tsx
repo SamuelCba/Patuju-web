@@ -7,48 +7,48 @@ import { Award, TrendingUp, Zap, Trophy } from 'lucide-react'
 
 const achievements = [
   {
-    category: 'Académico',
+    category: 'Gestión 2024',
     items: [
-      'Tasa de aprobación del 98% en evaluaciones nacionales',
-      'Estudiantes destacados en olimpiadas de matemática y ciencias',
-      'Programas de intercambio estudiantil internacional',
-      'Acreditación ISO 9001 en gestión educativa',
+      'Institución cuenta con 289 estudiantes efectivos',
+      '17 docentes profesionales y 1 item de administración',
+      'Incorporación de nuevos maestros especializados',
+      'Lic. Aida Márquez Cuevas en área de Valores Espiritualidad y Religiones',
     ],
   },
   {
     category: 'Deportivo',
     items: [
-      'Campeones interescolares de voleibol por 5 años consecutivos',
-      'Destacados participantes en competencias nacionales de atletismo',
-      'Equipo de fútbol femenino con múltiples títulos',
-      'Programa de formación de talentos deportivos',
+      'Segundo lugar en futbol de salón categoría varones - III Juegos Deportivos Estudiantiles',
+      'Excelente presentación de danza "Pastorcita" en ceremonia de inauguración',
+      'Segundo lugar en lanzamiento de jabalina - Herlin Chaurara Sánchez',
+      'Dirección técnica bajo liderazgo del Lic. Cristian Cerezo Lara',
     ],
   },
   {
-    category: 'Cultural',
+    category: 'Académico',
     items: [
-      'Presentaciones artísticas en festivales internacionales',
-      'Banda sinfónica de renombre regional',
-      'Programas de teatro y danza con reconocimiento nacional',
-      'Exposiciones de arte plástico y diseño',
+      'Primer lugar en Olimpiada de Ajedrez - Franz Elvin Carlo Vega',
+      'Clasificación para etapa departamental en competencia de ajedrez',
+      'Estudiantes destacados en categoría 1º a 3º año de escolaridad',
+      'Representación del Distrito de San Julián en competencias regionales',
     ],
   },
   {
-    category: 'Comunitario',
+    category: 'Cultural y Artístico',
     items: [
-      'Proyectos de responsabilidad social en la comunidad',
-      'Programas de tutoría para estudiantes de instituciones públicas',
-      'Iniciativas ambientales y de sostenibilidad',
-      'Convenios con universidades para investigación',
+      'Primer lugar en categoría B - Concurso de Banda Estudiantil',
+      'Premio de 2000 Bs. por excelente presentación musical',
+      'Preparación conjunta de maestros y Junta Escolar',
+      'Reconocimiento regional por calidad artística y musical',
     ],
   },
 ]
 
 const stats = [
-  { number: '35+', label: 'Años de excelencia' },
-  { number: '2000+', label: 'Estudiantes graduados' },
-  { number: '150+', label: 'Docentes dedicados' },
-  { number: '95%', label: 'Tasa de ingreso a universidades' },
+  { number: '35+', label: 'Años de trayectoria' },
+  { number: '289', label: 'Estudiantes 2024' },
+  { number: '17', label: 'Docentes profesionales' },
+  { number: '4', label: 'Primeros lugares 2024' },
 ]
 
 export default function LogrosPage() {

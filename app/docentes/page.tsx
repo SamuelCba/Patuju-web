@@ -3,64 +3,76 @@ import Footer from '@/components/Footer'
 
 const teachers = [
   {
-    name: 'Lic. María González',
-    subject: 'Directora General',
-    specialty: 'Educación y Administración',
+    name: 'Otondo Villca Saturnino',
+    subject: 'Ciencias Sociales',
   },
   {
-    name: 'Prof. Carlos Rodríguez',
+    name: 'Fernández Villa Daniel',
+    subject: 'Bio-Geo / Técnica Tecnológica',
+  },
+  {
+    name: 'Marquez Cuevas Aida',
+    subject: 'Valores Espiritualidad y Religión',
+  },
+  {
+    name: 'Quispe Patzi Grober',
     subject: 'Matemáticas',
-    specialty: 'Educación Matemática',
   },
   {
-    name: 'Lic. Ana Martínez',
-    subject: 'Lengua y Literatura',
-    specialty: 'Lingüística',
+    name: 'Oquendo Martínez Nancy Renmy',
+    subject: 'Artes Plásticas y Visuales',
   },
   {
-    name: 'Prof. Luis Sánchez',
-    subject: 'Ciencias Naturales',
-    specialty: 'Biología',
+    name: 'Pérez Fuentes Jaime',
+    subject: 'Matemáticas',
   },
   {
-    name: 'Lic. Patricia López',
-    subject: 'Historia y Geografía',
-    specialty: 'Ciencias Sociales',
+    name: 'Cuiza Romano Dilma',
+    subject: 'Lengua Castellana y Originaria',
   },
   {
-    name: 'Prof. Jorge Díaz',
-    subject: 'Educación Física',
-    specialty: 'Entrenamiento Deportivo',
+    name: 'Colque Félix Rhoy Riquy',
+    subject: 'Lengua Castellana y Originaria',
   },
   {
-    name: 'Lic. Sandra García',
-    subject: 'Inglés',
-    specialty: 'Lingüística Aplicada',
+    name: 'Rodiguez Aricoma Eva',
+    subject: 'Bio-Geo',
   },
   {
-    name: 'Prof. Roberto Pérez',
-    subject: 'Informática',
-    specialty: 'Tecnología Educativa',
+    name: 'Sandoval Soto Hilda',
+    subject: 'Cosmovisiones Filosofía y Psicología',
   },
   {
-    name: 'Lic. Carmen Torres',
-    subject: 'Educación Artística',
-    specialty: 'Artes Plásticas',
+    name: 'Copa Vélez Uber Adán',
+    subject: 'Lengua Extranjera',
   },
   {
-    name: 'Prof. Miguel Flores',
+    name: 'Coca Ramos Hernán',
+    subject: 'Matemáticas',
+  },
+  {
+    name: 'Valencio Flores Lilian Nathali',
+    subject: 'Ciencias Sociales',
+  },
+  {
+    name: 'Choque Gutiérrez Marcelo',
+    subject: 'Química / Física',
+  },
+  {
+    name: 'Cerezo Lara Cristian',
+    subject: 'Educación Física y Deportes',
+  },
+  {
+    name: 'Aguilzar Porco Efraín',
     subject: 'Educación Musical',
-    specialty: 'Música',
   },
   {
-    name: 'Lic. Rosario Mendoza',
-    subject: 'Psicología Educativa',
-    specialty: 'Orientación Psicopedagógica',
+    name: 'Rocha León Eleuteria',
+    subject: 'Ciencias Sociales',
   },
   {
-    name: 'Prof. Francisco Vargas',
-    subject: 'Educación Religiosa',
-    specialty: 'Formación en Valores',
+    name: 'Aguilar Miranda Ximena',
+    subject: 'Ciencias Sociales',
   },
 ]
 
@@ -93,11 +105,10 @@ export default function DocentesPage() {
                 <div className="w-16 h-16 bg-accent/20 rounded-lg mb-4 flex items-center justify-center text-2xl">
                   👨‍🏫
                 </div>
-                <h3 className="text-lg font-bold mb-1 group-hover:text-accent transition-colors">
+                <h3 className="text-lg font-bold mb-2 group-hover:text-accent transition-colors">
                   {teacher.name}
                 </h3>
-                <p className="text-accent font-medium mb-2">{teacher.subject}</p>
-                <p className="text-foreground/70 text-sm">{teacher.specialty}</p>
+                <p className="text-secondary font-medium">{teacher.subject}</p>
               </div>
             ))}
           </div>
