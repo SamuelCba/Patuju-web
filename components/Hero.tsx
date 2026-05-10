@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
+import ImageCarousel from './ImageCarousel'
 
 export default function Hero() {
   return (
@@ -94,7 +95,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right image */}
+          {/* Right carousel */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -102,14 +103,7 @@ export default function Hero() {
             className="relative hidden md:block"
           >
             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
-              <Image
-                src="/UE patuju2.jpeg"
-                alt="Unidad Educativa Patujú"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              <ImageCarousel />
             </div>
 
             {/* Floating card */}

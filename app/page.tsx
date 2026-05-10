@@ -1,8 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import Navigation from '@/components/Navigation'
 import Hero from '@/components/Hero'
 import Footer from '@/components/Footer'
+import NewsModal from '@/components/NewsModal'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { BookOpen, Users, Sparkles, ArrowRight, Award, Globe } from 'lucide-react'
@@ -30,23 +32,30 @@ const highlights = [
 
 const news = [
   {
-    title: 'Inauguración del Nuevo Pabellón',
-    date: '15 de mayo de 2024',
-    description: 'Se inaugura exitosamente el nuevo pabellón educativo con espacios modernos.',
+    title: 'Concurso de Danzas para Mantener Viva la Cultura',
+    date: '2024',
+    description: 'La Unidad Educativa Patujú ha lanzado una convocatoria para un concurso de danzas, con premios para los cuatro primeros lugares. Los ensayos oficiales y las inscripciones ya están en marcha, invitando a todos los estudiantes a participar y celebrar sus raíces culturales.',
   },
   {
-    title: 'Campeonato Interescolar 2024',
-    date: '10 de mayo de 2024',
-    description: 'Nuestros estudiantes obtienen destacadas posiciones en competencias deportivas.',
+    title: 'Segundo lugar en Futbol de Salón',
+    date: '2024',
+    description: 'En los III Juegos Deportivos Estudiantiles Intercolegiales, nuestro equipo de futbol de salón categoría varones obtuvo el segundo lugar bajo la dirección técnica del Lic. Cristian Cerezo Lara, demostrando el talento deportivo de nuestros estudiantes.',
   },
   {
-    title: 'Programa de Becas',
-    date: '1 de mayo de 2024',
-    description: 'Se abre la convocatoria para becas académicas 2024-2025.',
+    title: 'Primer lugar en Olimpiada de Ajedrez',
+    date: '2024',
+    description: 'El estudiante Franz Elvin Carlo Vega ocupó primer lugar en la categoría de 1º a 3º año de escolaridad en la etapa distrital, clasificando para representar al Distrito de San Julián en la etapa departamental.',
+  },
+  {
+    title: 'Primer lugar en Concurso de Banda Estudiantil',
+    date: '2024',
+    description: 'Nuestros estudiantes conquistaron el primer lugar en la categoría B del concurso de Banda Estudiantil, recibiendo 2000 Bs. como premio y reconocimiento a su dedicación y preparación.',
   },
 ]
 
 export default function Home() {
+  const [isNewsModalOpen, setIsNewsModalOpen] = useState(false)
+
   return (
     <main className="min-h-screen">
       <Navigation />
@@ -118,12 +127,12 @@ export default function Home() {
               </h2>
               <p className="text-secondary">Mantente informado sobre eventos y logros de nuestra comunidad</p>
             </div>
-            <Link
-              href="/otros"
+            <button
+              onClick={() => setIsNewsModalOpen(true)}
               className="hidden sm:flex items-center gap-2 px-6 py-3 rounded-lg bg-accent/10 border border-accent/20 text-accent hover:border-accent/50 hover:bg-accent/20 transition-all font-semibold"
             >
               Ver más <ArrowRight size={18} />
-            </Link>
+            </button>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -160,12 +169,12 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-8 text-center sm:hidden"
           >
-            <Link
-              href="/otros"
+            <button
+              onClick={() => setIsNewsModalOpen(true)}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent text-white hover:bg-accent-light transition-colors font-semibold"
             >
               Ver todas las noticias <ArrowRight size={18} />
-            </Link>
+            </button>
           </motion.div>
         </div>
       </section>
@@ -214,6 +223,13 @@ export default function Home() {
       </section>
 
       <Footer />
+
+      {/* News Modal */}
+      <NewsModal
+        isOpen={isNewsModalOpen}
+        onClose={() => setIsNewsModalOpen(false)}
+        news={news}
+      />
     </main>
   )
 }
