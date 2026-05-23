@@ -7,26 +7,44 @@ import Footer from '@/components/Footer'
 import NewsModal from '@/components/NewsModal'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { BookOpen, Users, Sparkles, ArrowRight, Award, Globe } from 'lucide-react'
+import { BookOpen, Users, Sparkles, ArrowRight, Award, Globe, Music, Trophy, HeartHandshake } from 'lucide-react'
 
 const highlights = [
   {
     title: 'Excelencia Académica',
-    description: 'Programas educativos de calidad con metodologías innovadoras y docentes certificados',
+    description: 'Programas educativos de calidad con metodologías innovadoras y docentes comprometidos',
     icon: BookOpen,
     color: 'from-blue-500 to-blue-600',
   },
   {
     title: 'Formación Integral',
-    description: 'Desarrollo de habilidades académicas, sociales, emocionales y artísticas',
+    description: 'Desarrollo de habilidades académicas, sociales, emocionales, culturales y artísticas',
     icon: Users,
     color: 'from-accent to-accent-light',
   },
   {
     title: 'Infraestructura Moderna',
-    description: 'Patrimonio educativo consolidado con espacios modernos y tecnología actualizada',
+    description: 'Patrimonio educativo consolidado con espacios funcionales y tecnología actualizada',
     icon: Globe,
     color: 'from-purple-500 to-purple-600',
+  },
+]
+
+const experiences = [
+  {
+    title: 'Cultura viva',
+    description: 'Danzas, música y actividades que fortalecen la identidad de nuestra comunidad educativa.',
+    icon: Music,
+  },
+  {
+    title: 'Deporte estudiantil',
+    description: 'Participación activa en disciplinas deportivas para formar disciplina, liderazgo y trabajo en equipo.',
+    icon: Trophy,
+  },
+  {
+    title: 'Valores y convivencia',
+    description: 'Acompañamiento cercano para promover respeto, responsabilidad y compromiso social.',
+    icon: HeartHandshake,
   },
 ]
 
@@ -57,21 +75,25 @@ export default function Home() {
   const [isNewsModalOpen, setIsNewsModalOpen] = useState(false)
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-hidden">
       <Navigation />
       <Hero />
 
       {/* Highlights Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-secondary-light/50 to-transparent">
+      <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-secondary-light/50 to-transparent">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
         <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl sm:text-5xl font-bold text-foreground text-balance mb-4">
+            <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-2 text-sm font-semibold text-accent mb-5">
+              <Sparkles size={16} /> Nuestra propuesta educativa
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground text-balance mb-4 tracking-tight">
               ¿Por qué elegir Patujú?
             </h2>
             <p className="text-lg text-secondary max-w-2xl mx-auto">
@@ -85,16 +107,17 @@ export default function Home() {
               return (
                 <motion.div
                   key={highlight.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 26 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="group relative p-8 rounded-2xl border border-border/50 hover:border-accent/30 bg-white/50 dark:bg-surface hover:shadow-lg transition-all duration-300"
+                  whileHover={{ y: -8, scale: 1.015 }}
+                  viewport={{ once: true, margin: '-80px' }}
+                  transition={{ duration: 0.55, delay: index * 0.1 }}
+                  className="group relative p-8 rounded-[1.75rem] border border-border/50 hover:border-accent/30 bg-white/60 dark:bg-surface/80 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-300 overflow-hidden backdrop-blur-md"
                 >
-                  {/* Icon background */}
-                  <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${highlight.color} opacity-5 rounded-full -mr-8 -mt-8 group-hover:opacity-10 transition-opacity`} />
+                  <div className={`absolute top-0 right-0 w-28 h-28 bg-gradient-to-br ${highlight.color} opacity-10 rounded-full -mr-10 -mt-10 group-hover:opacity-20 group-hover:scale-125 transition-all duration-500`} />
+                  <div className="absolute inset-x-8 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
-                  <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${highlight.color} text-white mb-4 relative z-10`}>
+                  <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${highlight.color} text-white mb-4 relative z-10 shadow-lg group-hover:rotate-3 transition-transform`}>
                     <Icon size={24} />
                   </div>
 
@@ -111,25 +134,80 @@ export default function Home() {
         </div>
       </section>
 
-      {/* News Section */}
+      {/* Experience Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6 }}
+            className="relative rounded-[2rem] border border-border/60 bg-gradient-to-br from-accent/10 via-white/50 to-accent-yellow/10 dark:via-surface/70 p-8 sm:p-10 overflow-hidden"
+          >
+            <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-accent/20 blur-3xl" />
+            <div className="absolute -left-16 -bottom-16 h-40 w-40 rounded-full bg-accent-yellow/20 blur-3xl" />
+            <p className="text-sm font-bold uppercase tracking-[0.24em] text-accent mb-4">Experiencia Patujú</p>
+            <h2 className="relative text-4xl sm:text-5xl font-black text-foreground tracking-tight text-balance mb-6">
+              Una comunidad escolar con movimiento, identidad y futuro.
+            </h2>
+            <p className="relative text-secondary leading-relaxed mb-8">
+              La página ahora transmite mejor la energía de la unidad educativa: más dinamismo, tarjetas interactivas y un lenguaje visual moderno sin perder los colores institucionales.
+            </p>
+            <Link
+              href="/otros"
+              className="relative inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 font-semibold text-white shadow-lg shadow-accent/20 transition-all hover:-translate-y-1 hover:bg-accent-light"
+            >
+              Ver más información <ArrowRight size={18} />
+            </Link>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-3 lg:grid-cols-1 gap-5">
+            {experiences.map((item, index) => {
+              const Icon = item.icon
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ x: 6 }}
+                  viewport={{ once: true, margin: '-80px' }}
+                  transition={{ duration: 0.55, delay: index * 0.1 }}
+                  className="group flex gap-5 rounded-3xl border border-border/60 bg-white/60 dark:bg-surface/75 p-6 shadow-sm backdrop-blur-md transition-all hover:border-accent/35 hover:shadow-xl"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+                    <Icon size={22} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-sm leading-relaxed text-secondary">{item.description}</p>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* News Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-secondary-light/35 to-transparent">
         <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
-            className="flex justify-between items-center mb-16"
+            className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-6 mb-16"
           >
             <div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-balance text-foreground mb-2">
+              <p className="text-sm font-bold uppercase tracking-[0.22em] text-accent mb-3">Comunidad activa</p>
+              <h2 className="text-4xl sm:text-5xl font-black text-balance text-foreground mb-2 tracking-tight">
                 Últimas Noticias
               </h2>
               <p className="text-secondary">Mantente informado sobre eventos y logros de nuestra comunidad</p>
             </div>
             <button
               onClick={() => setIsNewsModalOpen(true)}
-              className="hidden sm:flex items-center gap-2 px-6 py-3 rounded-lg bg-accent/10 border border-accent/20 text-accent hover:border-accent/50 hover:bg-accent/20 transition-all font-semibold"
+              className="hidden sm:flex items-center gap-2 px-6 py-3 rounded-xl bg-accent/10 border border-accent/20 text-accent hover:border-accent/50 hover:bg-accent/20 transition-all font-semibold hover:-translate-y-1"
             >
               Ver más <ArrowRight size={18} />
             </button>
@@ -139,12 +217,14 @@ export default function Home() {
             {news.map((item, index) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 26 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group p-8 border border-border/50 rounded-2xl bg-white/50 dark:bg-surface hover:border-accent/30 hover:shadow-lg transition-all duration-300"
+                whileHover={{ y: -8 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.55, delay: index * 0.1 }}
+                className="group relative p-8 border border-border/50 rounded-[1.75rem] bg-white/60 dark:bg-surface/80 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-300 overflow-hidden backdrop-blur-md"
               >
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent via-accent-yellow to-accent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="flex items-center gap-2 mb-4">
                   <Award size={16} className="text-accent" />
                   <span className="text-sm text-accent font-medium">{item.date}</span>
@@ -171,7 +251,7 @@ export default function Home() {
           >
             <button
               onClick={() => setIsNewsModalOpen(true)}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent text-white hover:bg-accent-light transition-colors font-semibold"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-white hover:bg-accent-light transition-colors font-semibold"
             >
               Ver todas las noticias <ArrowRight size={18} />
             </button>
@@ -184,21 +264,21 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
           className="max-w-5xl mx-auto relative"
         >
-          {/* Background elements */}
-          <div className="absolute inset-0 bg-gradient-to-r from-accent/20 via-accent-yellow/20 to-accent/20 rounded-3xl blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-accent/25 via-accent-yellow/25 to-accent/25 rounded-3xl blur-3xl animate-pulse-slow" />
 
-          <div className="relative bg-gradient-to-br from-accent/10 to-accent-yellow/10 border border-accent/20 rounded-3xl p-12 sm:p-16 text-center backdrop-blur-sm">
+          <div className="relative bg-gradient-to-br from-accent/10 to-accent-yellow/10 border border-accent/20 rounded-3xl p-12 sm:p-16 text-center backdrop-blur-sm overflow-hidden">
+            <div className="absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-balance text-foreground">
+              <h2 className="text-4xl sm:text-5xl font-black mb-6 text-balance text-foreground tracking-tight">
                 ¿Quieres ser parte de <span className="text-accent">Patujú</span>?
               </h2>
               <p className="text-lg text-secondary mb-10 max-w-3xl mx-auto leading-relaxed">
@@ -206,13 +286,13 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="group px-8 py-4 bg-accent hover:bg-accent-light text-white rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl">
+                <button className="group px-8 py-4 bg-accent hover:bg-accent-light text-white rounded-xl font-semibold transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:shadow-accent/25">
                   Enviar Mensaje
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
                 <Link
                   href="/otros"
-                  className="px-8 py-4 border-2 border-accent/30 hover:border-accent text-accent rounded-xl font-semibold transition-all hover:bg-accent/5"
+                  className="px-8 py-4 border-2 border-accent/30 hover:border-accent text-accent rounded-xl font-semibold transition-all hover:bg-accent/5 hover:-translate-y-1"
                 >
                   Más Información
                 </Link>
@@ -224,7 +304,6 @@ export default function Home() {
 
       <Footer />
 
-      {/* News Modal */}
       <NewsModal
         isOpen={isNewsModalOpen}
         onClose={() => setIsNewsModalOpen(false)}
