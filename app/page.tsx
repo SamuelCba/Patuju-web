@@ -9,6 +9,12 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { BookOpen, Users, Sparkles, ArrowRight, Award, Globe, Music, Trophy, HeartHandshake } from 'lucide-react'
 
+interface NewsItem {
+  title: string
+  description: string
+  date: string
+}
+
 const highlights = [
   {
     title: 'Excelencia Académica',
@@ -48,7 +54,7 @@ const experiences = [
   },
 ]
 
-const news = [
+const news: NewsItem[] = [
   {
     title: 'Concurso de Danzas para Mantener Viva la Cultura',
     date: '2024',
@@ -73,6 +79,17 @@ const news = [
 
 export default function Home() {
   const [isNewsModalOpen, setIsNewsModalOpen] = useState(false)
+  const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null)
+
+  const openNews = (item: NewsItem) => {
+    setSelectedNews(item)
+    setIsNewsModalOpen(true)
+  }
+
+  const openAllNews = () => {
+    setSelectedNews(null)
+    setIsNewsModalOpen(true)
+  }
 
   return (
     <main className="min-h-screen overflow-hidden">
@@ -80,7 +97,7 @@ export default function Home() {
       <Hero />
 
       {/* Highlights Section */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-secondary-light/50 to-transparent">
+      <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-secondary-light/50 to-transparent dark:from-white/[0.03] dark:to-transparent">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -112,7 +129,7 @@ export default function Home() {
                   whileHover={{ y: -8, scale: 1.015 }}
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.55, delay: index * 0.1 }}
-                  className="group relative p-8 rounded-[1.75rem] border border-border/50 hover:border-accent/30 bg-white/60 dark:bg-surface/80 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-300 overflow-hidden backdrop-blur-md"
+                  className="group relative p-8 rounded-[1.75rem] border border-border/50 dark:border-white/10 hover:border-accent/30 bg-white/60 dark:bg-white/[0.045] hover:shadow-2xl hover:shadow-accent/10 transition-all duration-300 overflow-hidden backdrop-blur-md"
                 >
                   <div className={`absolute top-0 right-0 w-28 h-28 bg-gradient-to-br ${highlight.color} opacity-10 rounded-full -mr-10 -mt-10 group-hover:opacity-20 group-hover:scale-125 transition-all duration-500`} />
                   <div className="absolute inset-x-8 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -142,7 +159,7 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
-            className="relative rounded-[2rem] border border-border/60 bg-gradient-to-br from-accent/10 via-white/50 to-accent-yellow/10 dark:via-surface/70 p-8 sm:p-10 overflow-hidden"
+            className="relative rounded-[2rem] border border-border/60 dark:border-white/10 bg-gradient-to-br from-accent/10 via-white/50 to-accent-yellow/10 dark:via-white/[0.04] dark:from-accent/15 dark:to-accent-yellow/10 p-8 sm:p-10 overflow-hidden"
           >
             <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-accent/20 blur-3xl" />
             <div className="absolute -left-16 -bottom-16 h-40 w-40 rounded-full bg-accent-yellow/20 blur-3xl" />
@@ -172,7 +189,7 @@ export default function Home() {
                   whileHover={{ x: 6 }}
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.55, delay: index * 0.1 }}
-                  className="group flex gap-5 rounded-3xl border border-border/60 bg-white/60 dark:bg-surface/75 p-6 shadow-sm backdrop-blur-md transition-all hover:border-accent/35 hover:shadow-xl"
+                  className="group flex gap-5 rounded-3xl border border-border/60 dark:border-white/10 bg-white/60 dark:bg-white/[0.045] p-6 shadow-sm backdrop-blur-md transition-all hover:border-accent/35 hover:shadow-xl"
                 >
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white transition-colors">
                     <Icon size={22} />
@@ -189,7 +206,7 @@ export default function Home() {
       </section>
 
       {/* News Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-secondary-light/35 to-transparent">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-secondary-light/35 to-transparent dark:via-white/[0.025]">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -206,7 +223,7 @@ export default function Home() {
               <p className="text-secondary">Mantente informado sobre eventos y logros de nuestra comunidad</p>
             </div>
             <button
-              onClick={() => setIsNewsModalOpen(true)}
+              onClick={openAllNews}
               className="hidden sm:flex items-center gap-2 px-6 py-3 rounded-xl bg-accent/10 border border-accent/20 text-accent hover:border-accent/50 hover:bg-accent/20 transition-all font-semibold hover:-translate-y-1"
             >
               Ver más <ArrowRight size={18} />
@@ -215,14 +232,15 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {news.map((item, index) => (
-              <motion.div
+              <motion.article
                 key={item.title}
                 initial={{ opacity: 0, y: 26 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ y: -8 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.55, delay: index * 0.1 }}
-                className="group relative p-8 border border-border/50 rounded-[1.75rem] bg-white/60 dark:bg-surface/80 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-300 overflow-hidden backdrop-blur-md"
+                onClick={() => openNews(item)}
+                className="group relative p-8 border border-border/50 dark:border-white/10 rounded-[1.75rem] bg-white/60 dark:bg-white/[0.045] hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-300 overflow-hidden backdrop-blur-md cursor-pointer"
               >
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent via-accent-yellow to-accent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="flex items-center gap-2 mb-4">
@@ -235,10 +253,17 @@ export default function Home() {
                 <p className="text-secondary text-sm leading-relaxed mb-4 line-clamp-3">
                   {item.description}
                 </p>
-                <button className="text-accent font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation()
+                    openNews(item)
+                  }}
+                  className="text-accent font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all"
+                >
                   Leer más <ArrowRight size={16} />
                 </button>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
 
@@ -250,7 +275,7 @@ export default function Home() {
             className="mt-8 text-center sm:hidden"
           >
             <button
-              onClick={() => setIsNewsModalOpen(true)}
+              onClick={openAllNews}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-white hover:bg-accent-light transition-colors font-semibold"
             >
               Ver todas las noticias <ArrowRight size={18} />
@@ -308,6 +333,8 @@ export default function Home() {
         isOpen={isNewsModalOpen}
         onClose={() => setIsNewsModalOpen(false)}
         news={news}
+        selectedNews={selectedNews}
+        onSelectNews={setSelectedNews}
       />
     </main>
   )
